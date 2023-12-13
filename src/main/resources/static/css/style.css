@@ -6,6 +6,13 @@ h5,
 h6 {
   font-weight: 100; }
 
+.backbutton {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.backbutton:hover {
+  background-color: #D5D5D5; }
+
 .p-form-top {
   height: 120px; }
 
@@ -75,7 +82,8 @@ nav.navbar {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #000000; }
+  background-color: #000000;
+  overflow: auto; }
   .users-new-wrapper main {
     padding-top: 80px; }
 
@@ -90,6 +98,43 @@ nav.navbar {
   background-color: #000000; }
   .sessions-new-wrapper main {
     padding-top: 80px; }
+
+.movies-index-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/images/bg-top.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #000000;
+  overflow: auto; }
+  .movies-index-wrapper .container {
+    padding-top: 80px; }
+    .movies-index-wrapper .container h1 {
+      font-weight: 300;
+      margin-bottom: 20px; }
+    .movies-index-wrapper .container h2 {
+      margin-bottom: 60px; }
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; }
+
+.movielist {
+  width: 300px;
+  background-color: #222222;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 40px; }
+  .movielist img {
+    width: 100%;
+    object-fit: contain; }
+  .movielist h5 {
+    font-weight: 300;
+    color: white;
+    margin-top: 7px; }
 
 .topics-new-wrapper,
 .comments-new-wrapper {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
+
+<head>
+	<title>FlixGo</title>
+</head>
+
+<body>
+	<div class="movies-index-wrapper" layout:fragment="contents">
+		<div class="container">
+			<div class="d-none d-lg-block d-xl-block d-xxl-block">
+				<div class="row justify-content-start mb-3">
+					<div class="col-3">
+						<a class="btn w-100 btn-outline-light" href="/now-playing">Now Playing</a>
+					</div>
+					<div class="col-3">
+						<a class="btn w-100 btn-outline-light" href="/upcoming">Upcoming</a>
+					</div>
+				</div>
+			</div>
+			<div class="d-block d-lg-none d-xl-none d-xxl-none mb-3">
+				<a class="btn w-100 btn-outline-light mb-3" href="/now-playing">Now Playing</a>
+				<a class="btn w-100 btn-outline-light" href="/upcoming">Upcoming</a>
+			</div>
+			<h1 class="text-white" th:text="${movieStatus} ?: 'Now Playing in Cinemas'"></h1>
+			<!--Movie List 20231213-->
+			<main class="main">
+				<div class="movielist text-center">
+					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
+					<h5>Movie Title Here</h5>
+					<a class="btn btn-primary mb-3" href="#">Details</a>
+				</div>
+				<div class="movielist text-center">
+					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
+					<h5>Movie Title Here</h5>
+					<a class="btn btn-primary mb-3" href="#">Details</a>
+				</div>
+				<div class="movielist text-center">
+					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
+					<h5>Movie Title Here</h5>
+					<a class="btn btn-primary mb-3" href="#">Details</a>
+				</div>
+				<div class="movielist text-center">
+					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
+					<h5>Movie Title Here</h5>
+					<a class="btn btn-primary mb-3" href="#">Details</a>
+				</div>
+				<div class="movielist text-center">
+					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
+					<h5>Movie Title Here</h5>
+					<a class="btn btn-primary mb-3" href="#">Details</a>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark" layout:fragment="nav">
 		<div class="container">
-			<a class="navbar-brand" th:href="@{/topics}">
+			<a class="navbar-brand" th:href="@{/home}">
 				<img src="/images/icons/logo.png" th:src="@{/images/icons/logo.png}" class="brand">
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -15,11 +15,13 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<th:block sec:authorize="isAuthenticated()">
+						<!--
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/favorites}">
 								<img src="/images/icons/heart.png" th:src="@{/images/icons/heart.png}">
 							</a>
 						</li>
+						-->
 						<li class="nav-item">
 							<a th:href="@{/logout}" class="nav-link convert" data-method="post"
 								th:data-_csrf="${_csrf.token}">
