@@ -24,32 +24,13 @@
 				<a class="btn w-100 btn-outline-light" href="/upcoming">Upcoming</a>
 			</div>
 			<h1 class="text-white" th:text="${movieStatus} ?: 'Now Playing in Cinemas'"></h1>
-			<!--Movie List 20231213-->
+			<!--Movie List-->
 			<main class="main">
-				<div class="movielist text-center">
-					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
-					<h5>Movie Title Here</h5>
-					<a class="btn btn-primary mb-3" href="#">Details</a>
-				</div>
-				<div class="movielist text-center">
-					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
-					<h5>Movie Title Here</h5>
-					<a class="btn btn-primary mb-3" href="#">Details</a>
-				</div>
-				<div class="movielist text-center">
-					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
-					<h5>Movie Title Here</h5>
-					<a class="btn btn-primary mb-3" href="#">Details</a>
-				</div>
-				<div class="movielist text-center">
-					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
-					<h5>Movie Title Here</h5>
-					<a class="btn btn-primary mb-3" href="#">Details</a>
-				</div>
-				<div class="movielist text-center">
-					<img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg">
-					<h5>Movie Title Here</h5>
-					<a class="btn btn-primary mb-3" href="#">Details</a>
+				<div class="movielist text-center" th:each="movie : ${list}">
+					<img th:src="@{${movie.posterPath}}"
+						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
+					<h5 th:text="${movie.originalTitle}"></h5>
+					<a class="btn btn-primary mb-3" href="/details">Details</a>
 				</div>
 			</main>
 		</div>

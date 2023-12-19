@@ -13,3 +13,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+        
+tmdb:
+  key: ${tmdb.key}

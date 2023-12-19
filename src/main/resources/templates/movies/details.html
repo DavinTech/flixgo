@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
+
+<head>
+	<title>FlixGo</title>
+</head>
+
+<body>
+	<div class="details-index-wrapper" layout:fragment="contents">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4 movielist">
+					<img src="https://image.tmdb.org/t/p/w500${movie.posterPath}"
+						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
+				</div>
+				<div class="col-md-8">
+					<h1>${movie.originalTitle}</h1>
+					<p>${movie.overview}</p>
+					<p><strong>Genre:</strong> ${movie.genre}</p>
+					<p><strong>Release Date:</strong> ${movie.releaseDate}</p>
+					<p><strong>Runtime:</strong> ${movie.runtime}</p>
+					<p><strong>Director:</strong> ${movie.director}</p>
+					<p><strong>Cast:</strong> ${movie.cast}</p>
+				</div>
+			</div>
+			<div>
+				<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
+			</div>
+		</div>
+
+		<!--Placeholder
+			<div class="row">
+				<div class="col-md-4 movielist">
+					<img src="https://image.tmdb.org/t/p/w500${movie.posterPath}"
+						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
+				</div>
+				<div class="col-md-8">
+					<h1>${movie.originalTitle}</h1>
+					<p>${movie.overview}</p>
+					<ul class="list-group mt-3">
+						<li class="list-group-item"><strong>Genre:</strong> ${movie.genre}</li>
+						<li class="list-group-item"><strong>Release Date:</strong> ${movie.releaseDate}</li>
+						<li class="list-group-item"><strong>Runtime:</strong> ${movie.runtime}</li>
+						<li class="list-group-item"><strong>Director:</strong> ${movie.director}</li>
+						<li class="list-group-item"><strong>Cast:</strong> ${movie.cast}</li>
+					</ul>
+				</div>
+			</div>
+			<div>
+				<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
+			</div>
+			-->
+
+	</div>
+	</div>
+</body>
+
+</html>
