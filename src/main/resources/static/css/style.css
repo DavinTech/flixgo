@@ -120,16 +120,16 @@ nav.navbar {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start; }
-      .movies-index-wrapper .container .main .movielist {
+      .movies-index-wrapper .container .main .movie-list {
         width: 300px;
         background-color: #222222;
         margin-right: 10px;
         margin-left: 10px;
         margin-bottom: 40px; }
-        .movies-index-wrapper .container .main .movielist img {
+        .movies-index-wrapper .container .main .movie-list img {
           width: 100%;
           object-fit: contain; }
-        .movies-index-wrapper .container .main .movielist h5 {
+        .movies-index-wrapper .container .main .movie-list h5 {
           font-weight: 300;
           color: white;
           margin-top: 7px;
@@ -139,7 +139,6 @@ nav.navbar {
 .details-index-wrapper {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/bg-top.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -149,8 +148,9 @@ nav.navbar {
   justify-content: center; }
   .details-index-wrapper .container {
     margin-top: 80px;
-    padding-right: 0px;
-    background-color: #222222; }
+    margin-bottom: 80px;
+    padding-right: 10px;
+    background-color: rgba(34, 34, 34, 0.9); }
     .details-index-wrapper .container h1 {
       font-weight: 300;
       margin-bottom: 20px;
@@ -159,14 +159,33 @@ nav.navbar {
     .details-index-wrapper .container p {
       margin-bottom: 20px;
       color: white; }
-    .details-index-wrapper .container .movielist {
+    .details-index-wrapper .container .movie-list {
       width: 400px;
-      background-color: #222222;
-      margin-right: 10px; }
-      .details-index-wrapper .container .movielist img {
+      margin-right: 10px;
+      margin-bottom: 20px; }
+      .details-index-wrapper .container .movie-list img {
         width: 100%;
         object-fit: contain;
         margin-top: 12px; }
+    .details-index-wrapper .container .cast-section {
+      display: flex;
+      overflow-x: auto;
+      justify-content: flex-start; }
+      .details-index-wrapper .container .cast-section p {
+        font-size: 14px;
+        margin-bottom: 0px;
+        color: white; }
+      .details-index-wrapper .container .cast-section .cast-box {
+        margin-right: 10px; }
+        .details-index-wrapper .container .cast-section .cast-box .carousel-image {
+          width: 120px;
+          border-radius: 10px;
+          margin-bottom: 5px;
+          box-shadow: 0px 0px 5px black; }
+        .details-index-wrapper .container .cast-section .cast-box .character-name {
+          font-size: 12px;
+          color: #bcbcbc;
+          margin-bottom: 10px; }
 
 .topics-new-wrapper,
 .comments-new-wrapper {

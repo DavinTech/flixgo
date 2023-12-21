@@ -10,8 +10,6 @@ public class MovieApiForm {
 
 	private String originalTitle;
 
-	private String overview;
-
 	private String posterPath;
 
 	private String releaseDate;

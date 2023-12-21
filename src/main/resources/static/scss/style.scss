@@ -160,7 +160,7 @@ nav.navbar {
 			flex-wrap: wrap;
 			justify-content: flex-start;
 
-			.movielist {
+			.movie-list {
 				width: 300px;
 				background-color: #222222;
 				margin-right: 10px;
@@ -188,7 +188,6 @@ nav.navbar {
 .details-index-wrapper {
 	width: 100vw;
 	height: 100vh;
-	background-image: url('/images/bg-top.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -199,8 +198,9 @@ nav.navbar {
 
 	.container {
 		margin-top: 80px;
-		padding-right: 0px;
-		background-color: #222222;
+		margin-bottom: 80px;
+		padding-right: 10px;
+		background-color: rgba(34, 34, 34, 0.9);
 
 		h1 {
 			font-weight: 300;
@@ -214,15 +214,45 @@ nav.navbar {
 			color: white;
 		}
 
-		.movielist {
+		.movie-list {
 			width: 400px;
-			background-color: #222222;
 			margin-right: 10px;
+			margin-bottom: 20px;
 
 			img {
 				width: 100%;
 				object-fit: contain;
 				margin-top: 12px;
+			}
+		}
+
+		.cast-section {
+
+			display: flex;
+			overflow-x: auto;
+			justify-content: flex-start;
+
+			p {
+				font-size: 14px;
+				margin-bottom: 0px;
+				color: white;
+			}
+
+			.cast-box {
+				margin-right: 10px;
+
+				.carousel-image {
+					width: 120px;
+					border-radius: 10px;
+					margin-bottom: 5px;
+					box-shadow: 0px 0px 5px black;
+				}
+
+				.character-name {
+					font-size: 12px;
+					color: #bcbcbc;
+					margin-bottom: 10px;
+				}
 			}
 		}
 	}

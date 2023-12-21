@@ -7,54 +7,64 @@
 </head>
 
 <body>
-	<div class="details-index-wrapper" layout:fragment="contents">
+	<div class="details-index-wrapper" layout:fragment="contents"
+		th:style="|background-image: url(@{${backdropPath}}), url('/images/bg-top.png');|">
 		<div class="container">
 
 			<div class="row">
-				<div class="col-md-4 movielist">
-					<img src="https://image.tmdb.org/t/p/w500${movie.posterPath}"
-						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
+				<div class="col-md-4 movie-list">
+					<img th:src="@{${posterPath}}" onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
 				</div>
 				<div class="col-md-8">
-					<h1>${movie.originalTitle}</h1>
-					<p>${movie.overview}</p>
-					<p><strong>Genre:</strong> ${movie.genre}</p>
-					<p><strong>Release Date:</strong> ${movie.releaseDate}</p>
-					<p><strong>Runtime:</strong> ${movie.runtime}</p>
-					<p><strong>Director:</strong> ${movie.director}</p>
-					<p><strong>Cast:</strong> ${movie.cast}</p>
+					<h1 th:text="${originalTitle}">${movie.originalTitle}</h1>
+					<p th:text="${overview}">${movie.overview}</p>
+					<p><strong th:text="${genreList.size <= 1} ? 'Genre: ' : 'Genres: '">Genre: </strong><span
+							th:each="genre, iterStat : ${genreList}"
+							th:text="!${iterStat.last} ? ${genre} + ', ': ${genre}"></span><span
+							th:text="${genreList.size == null OR genreList.size < 1} ? 'N/A'"></span></p>
+					<p><strong>Release Date: </strong><span th:text="${releaseDate}"></span></p>
+					<p><strong>Runtime: </strong><span
+							th:text="${runtime != null AND runtime > 0} ? ${runtime} + ' minutes' : 'N/A'"></span></p>
+					<p><strong th:text="${directorList.size <= 1} ? 'Director: ' : 'Directors: '">Director:
+						</strong><span th:each="director, iterStat : ${directorList}"
+							th:text="!${iterStat.last} ? ${director} + ', ': ${director}"></span><span
+							th:text="${directorList.size == null OR directorList.size < 1} ? 'N/A'"></span></p>
+					</p>
+					<!--Placeholder
+					<p><strong>Cast:</strong></p>
+					<div class="main">
+						<div class="castBox text-center" th:each="cast : ${castList}">
+							<img class="carouselImage" th:src="@{${cast.profilePath}}"
+								onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
+							<p th:text="${cast.castName}"></p>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
+				</div>
+-->
 				</div>
 			</div>
+
+			<p><strong>Cast:</strong></p>
+			<div class="cast-section">
+				<div class="cast-box text-center" th:each="cast : ${castList}">
+					<img class="carousel-image" th:src="@{${cast.profilePath}}"
+						onerror="this.src='/images/fallback_profile.jpg';this.onerror='';">
+					<p th:text="${cast.castName}"></p>
+					<p class="character-name" th:text="${cast.character}"></p>
+				</div>
+			</div>
+
 			<div>
 				<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
 			</div>
+
 		</div>
 
-		<!--Placeholder
-			<div class="row">
-				<div class="col-md-4 movielist">
-					<img src="https://image.tmdb.org/t/p/w500${movie.posterPath}"
-						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
-				</div>
-				<div class="col-md-8">
-					<h1>${movie.originalTitle}</h1>
-					<p>${movie.overview}</p>
-					<ul class="list-group mt-3">
-						<li class="list-group-item"><strong>Genre:</strong> ${movie.genre}</li>
-						<li class="list-group-item"><strong>Release Date:</strong> ${movie.releaseDate}</li>
-						<li class="list-group-item"><strong>Runtime:</strong> ${movie.runtime}</li>
-						<li class="list-group-item"><strong>Director:</strong> ${movie.director}</li>
-						<li class="list-group-item"><strong>Cast:</strong> ${movie.cast}</li>
-					</ul>
-				</div>
-			</div>
-			<div>
-				<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
-			</div>
-			-->
+	</div>
 
-	</div>
-	</div>
 </body>
 
 </html>
