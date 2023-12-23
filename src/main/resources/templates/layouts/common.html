@@ -50,6 +50,13 @@
 			<li th:each="error : ${#fields.detailedErrors()}" class="error-message" th:text="${error.message}" />
 		</ul>
 	</div>
+	<footer class="footer" layout:fragment="footr">
+		<p class="ms-2">&copy; 2023 FlixGo by DavinTech. All Rights Reserved. FlixGo uses the
+			TMDB API but is not endorsed or certified by
+			<a href="https://www.themoviedb.org/" target="_blank"><img class="tmdb-logo"
+					src="/images/icons/tmdb_logo.svg" th:src="@{/images/icons/tmdb_logo.svg}"></a>
+		</p>
+	</footer>
 </body>
 
 </html>

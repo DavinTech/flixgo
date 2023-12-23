@@ -8,7 +8,7 @@
 
 <body>
 	<div class="details-index-wrapper" layout:fragment="contents"
-		th:style="|background-image: url(@{${backdropPath}}), url('/images/bg-top.png');|">
+		th:style="|background-image: url(@{${backdropPath}}), url('/images/bg-top3.png');|">
 		<div class="container">
 
 			<div class="row">
@@ -29,32 +29,26 @@
 						</strong><span th:each="director, iterStat : ${directorList}"
 							th:text="!${iterStat.last} ? ${director} + ', ': ${director}"></span><span
 							th:text="${directorList.size == null OR directorList.size < 1} ? 'N/A'"></span></p>
-					</p>
-					<!--Placeholder
-					<p><strong>Cast:</strong></p>
-					<div class="main">
-						<div class="castBox text-center" th:each="cast : ${castList}">
-							<img class="carouselImage" th:src="@{${cast.profilePath}}"
-								onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
-							<p th:text="${cast.castName}"></p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<button class="btn btn-primary mb-3 mt-3" onclick="history.back()">Go Back</button>
-				</div>
--->
 				</div>
 			</div>
 
-			<p><strong>Cast:</strong></p>
+			<p><strong>Cast: </strong><span th:text="${castList.size == null OR castList.size < 1} ? 'N/A'"></span></p>
 			<div class="cast-section">
 				<div class="cast-box text-center" th:each="cast : ${castList}">
-					<img class="carousel-image" th:src="@{${cast.profilePath}}"
+					<img class="cast-image" th:src="@{${cast.profilePath}}"
 						onerror="this.src='/images/fallback_profile.jpg';this.onerror='';">
 					<p th:text="${cast.castName}"></p>
 					<p class="character-name" th:text="${cast.character}"></p>
 				</div>
+			</div>
+
+			<p><strong th:text="${videoList.size == null OR videoList.size < 1} ? '' : 
+					(${videoList.size == 1} ? 'Official Trailer: ' : 'Official Trailers: ')">Official
+					Trailer:</strong></p>
+			<div class="video-box" th:each="videoPath : ${videoList}">
+				<iframe class="promo-video" th:src="@{${videoPath}}" allowfullscreen webkitallowfullscreen
+					mozallowfullscreen>
+				</iframe>
 			</div>
 
 			<div>

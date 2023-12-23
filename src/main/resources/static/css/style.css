@@ -8,7 +8,7 @@ h6 {
 
 .backbutton {
   margin-top: 15px;
-  margin-bottom: 15px; }
+  margin-bottom: 30px; }
 
 .backbutton:hover {
   background-color: #D5D5D5; }
@@ -55,8 +55,8 @@ nav.navbar {
     height: 40px; }
 
 .pages-index-wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
   background-image: url("/images/bg-top.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -75,21 +75,20 @@ nav.navbar {
       margin-bottom: 60px; }
 
 .users-new-wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
   background-image: url("/images/bg-top2.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #000000;
-  overflow: auto; }
+  background-color: #000000; }
   .users-new-wrapper main {
-    padding-top: 80px; }
+    padding-top: 30px; }
 
 .sessions-new-wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
   background-image: url("/images/bg-top.png");
   background-position: center center;
   background-repeat: no-repeat;
@@ -100,15 +99,14 @@ nav.navbar {
     padding-top: 80px; }
 
 .movies-index-wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
   background-image: url("/images/bg-top.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #000000;
-  overflow: auto; }
+  background-color: #000000; }
   .movies-index-wrapper .container {
     padding-top: 80px; }
     .movies-index-wrapper .container h1 {
@@ -137,17 +135,16 @@ nav.navbar {
           margin-right: 10px; }
 
 .details-index-wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #000000;
-  overflow: auto;
   justify-content: center; }
   .details-index-wrapper .container {
-    margin-top: 80px;
+    margin-top: 470px;
     margin-bottom: 80px;
     padding-right: 10px;
     background-color: rgba(34, 34, 34, 0.9); }
@@ -162,7 +159,7 @@ nav.navbar {
     .details-index-wrapper .container .movie-list {
       width: 400px;
       margin-right: 10px;
-      margin-bottom: 20px; }
+      margin-bottom: 40px; }
       .details-index-wrapper .container .movie-list img {
         width: 100%;
         object-fit: contain;
@@ -170,14 +167,16 @@ nav.navbar {
     .details-index-wrapper .container .cast-section {
       display: flex;
       overflow-x: auto;
-      justify-content: flex-start; }
+      justify-content: flex-start;
+      margin-bottom: 40px; }
       .details-index-wrapper .container .cast-section p {
         font-size: 14px;
         margin-bottom: 0px;
         color: white; }
       .details-index-wrapper .container .cast-section .cast-box {
-        margin-right: 10px; }
-        .details-index-wrapper .container .cast-section .cast-box .carousel-image {
+        margin-right: 10px;
+        width: 120px; }
+        .details-index-wrapper .container .cast-section .cast-box .cast-image {
           width: 120px;
           border-radius: 10px;
           margin-bottom: 5px;
@@ -186,58 +185,35 @@ nav.navbar {
           font-size: 12px;
           color: #bcbcbc;
           margin-bottom: 10px; }
+    .details-index-wrapper .container .video-box {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding-top: 56.25%;
+      /* 16:9 Aspect Ratio */
+      margin-bottom: 30px; }
+      .details-index-wrapper .container .video-box .promo-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none; }
 
-.topics-new-wrapper,
-.comments-new-wrapper {
-  padding-top: 80px; }
-  .topics-new-wrapper #description,
-  .comments-new-wrapper #description {
-    height: 80px; }
-
-.topics-index-wrapper {
-  padding: 80px 0 20px;
-  background-color: #fafafa;
-  min-height: calc(100vh - 180px);
-  overflow: hidden; }
-  .topics-index-wrapper main {
-    background-color: #fff;
-    padding: 20px 0;
-    margin-top: 30px;
-    border: 1px solid #e6ecf0;
-    border-radius: 6px; }
-    .topics-index-wrapper main .author {
-      margin-top: 10px;
-      padding: 0 20px; }
-    .topics-index-wrapper main .image {
-      margin: 10px 0;
-      width: 100%; }
-    .topics-index-wrapper main .icons {
-      display: flex;
-      flex-direction: row; }
-      .topics-index-wrapper main .icons .icon {
-        display: block;
-        width: 35px;
-        height: 30px;
-        margin-left: 20px; }
-        .topics-index-wrapper main .icons .icon img {
-          width: 35px;
-          height: 30px; }
-        .topics-index-wrapper main .icons .icon .favorite-on {
-          -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
-          filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8); }
-      .topics-index-wrapper main .icons .count {
-        display: flex;
-        width: 10px;
-        height: 30px;
-        align-items: flex-end; }
-    .topics-index-wrapper main .description {
-      padding: 10px 20px;
-      overflow: auto;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      background-color: white;
-      border: none; }
-    .topics-index-wrapper main .comments ul li {
-      list-style: none; }
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: #b8b8b8;
+  text-align: start;
+  font-size: 10px;
+  display: flex;
+  align-items: center; }
+  .footer .tmdb-logo {
+    height: 6px; }
+  .footer p {
+    margin-bottom: 0px; }
 
 /*# sourceMappingURL=style.css.map */

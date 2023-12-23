@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -90,18 +91,22 @@ public class DetailsController {
 			castList.add(castForm);
 
 		}
-		//System.out.println(castList);
 
-		//		MovieApiForm form = new MovieApiForm();
-		//
-		//		form.setId(id);
-		//		form.setPosterPath("https://image.tmdb.org/t/p/w500" + posterPath);
-		//		form.setOriginalTitle(originalTitle);
-		//		form.setOverview(overview);
-		//
-		//		System.out.println(form);
-		//
-		//		model.addAttribute("form", form);
+		//Get Videos
+		JsonNode videoResult = root.get("videos").get("results");
+
+		List<String> videoList = new ArrayList<String>();
+		for (JsonNode video : videoResult) {
+			String videoType = video.get("type").textValue();
+			if (videoType.equals("Trailer")) {
+				String videoKey = video.get("key").textValue();
+				String videoPath = "https://www.youtube.com/embed/" + videoKey;
+				videoList.add(videoPath);
+			}
+		}
+		//System.out.println(videoList);
+
+		Collections.reverse(videoList);
 
 		String releaseDate = form.getReleaseDate();
 		model.addAttribute("releaseDate", releaseDate);
@@ -113,6 +118,7 @@ public class DetailsController {
 		model.addAttribute("genreList", genreList);
 		model.addAttribute("directorList", directorList);
 		model.addAttribute("castList", castList);
+		model.addAttribute("videoList", videoList);
 
 		return "movies/details";
 	}
