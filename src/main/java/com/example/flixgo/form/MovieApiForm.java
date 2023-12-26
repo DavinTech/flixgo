@@ -12,6 +12,4 @@ public class MovieApiForm {
 
 	private String posterPath;
 
-	private String releaseDate;
-
 }

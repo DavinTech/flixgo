@@ -11,4 +11,5 @@ public class CastApiForm {
 	private String profilePath;
 
 	private String character;
+
 }

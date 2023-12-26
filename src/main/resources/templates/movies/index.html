@@ -23,20 +23,15 @@
 				<a class="btn w-100 btn-outline-light mb-3" href="/now-playing">Now Playing</a>
 				<a class="btn w-100 btn-outline-light" href="/upcoming">Upcoming</a>
 			</div>
-			<h1 class="text-white" th:text="${movieStatus} ?: 'Now Playing in Cinemas'"></h1>
+			<h1 class="text-white" th:text="${movieStatus}"></h1>
 			<!--Movie List-->
 			<main class="main">
 				<div class="movie-list text-center" th:each="movie : ${list}">
 					<img th:src="@{${movie.posterPath}}"
 						onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
 					<h5 th:text="${movie.originalTitle}"></h5>
-					<form th:action="@{'/details/{id}'(id=${movie.id})}" method="POST">
-						<!--add below inputs to pass particular form result(s) to another class-->
-						<input type="hidden" name="releaseDate" th:value="${movie.releaseDate}" />
-						<button class="btn btn-primary mb-3" type="submit" name="button">Details</button>
-					</form>
-					<!--<a class="btn btn-primary mb-3" href="/details"
-						th:href="@{'/details/{id}'(id=${movie.id})}">Details</a>-->
+					<a class="btn btn-primary mb-3" href="/details"
+						th:href="@{'/details/{id}'(id=${movie.id})}">Details</a>
 				</div>
 			</main>
 		</div>

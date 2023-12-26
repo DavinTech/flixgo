@@ -12,11 +12,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.flixgo.form.CastApiForm;
-import com.example.flixgo.form.MovieApiForm;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,15 +25,15 @@ public class DetailsController {
 	@Value("Bearer ${TMDB_KEY}")
 	private String tmdbKey;
 
-	//@GetMapping(path = "/details/{id}")
-	@RequestMapping(value = "/details/{id}")
-	public String details(@PathVariable("id") int id, Model model, MovieApiForm form)
+	@GetMapping(path = "/details/{id}")
+	public String details(@PathVariable("id") int id, Model model)
 			throws IOException, InterruptedException {
+
 		//Movie Details
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(
 						"https://api.themoviedb.org/3/movie/" + id
-								+ "?append_to_response=credits%2Cvideos&language=en-US"))
+								+ "?append_to_response=credits%2Cvideos%2Crelease_dates&language=en-US"))
 				.header("accept", "application/json")
 				.header("Authorization",
 						tmdbKey)
@@ -60,6 +59,20 @@ public class DetailsController {
 			String genre = genreItem.get("name").textValue();
 			genreList.add(genre);
 		}
+
+		//Get Release Date
+		JsonNode releaseDatesResult = root.get("release_dates").get("results");
+
+		String releaseDateJPLatest = null;
+		for (JsonNode releaseDates : releaseDatesResult) {
+			String region = releaseDates.get("iso_3166_1").textValue();
+			if (region.equals("JP")) {
+				JsonNode releaseDateJP = releaseDates.get("release_dates");
+				releaseDateJPLatest = releaseDateJP.get(releaseDateJP.size() - 1).get("release_date").textValue();
+			}
+		}
+
+		String releaseDateLocal = releaseDateJPLatest.substring(0, 10);
 
 		//Get Directors
 		JsonNode crewResult = root.get("credits").get("crew");
@@ -108,8 +121,7 @@ public class DetailsController {
 
 		Collections.reverse(videoList);
 
-		String releaseDate = form.getReleaseDate();
-		model.addAttribute("releaseDate", releaseDate);
+		model.addAttribute("releaseDate", releaseDateLocal);
 		model.addAttribute("overview", overview);
 		model.addAttribute("posterPath", "https://image.tmdb.org/t/p/w500" + posterPath);
 		model.addAttribute("backdropPath", "https://image.tmdb.org/t/p/original" + backdropPath);

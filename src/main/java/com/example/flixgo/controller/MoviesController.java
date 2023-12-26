@@ -44,17 +44,11 @@ public class MoviesController {
 			//Parse JSON
 			ObjectMapper mapper = new ObjectMapper();
 
-			//Prettyprinter
-			/*Object jsonObject = mapper.readValue(response.body(), Object.class);
+			//JSON pretty printer
+			/*
+			Object jsonObject = mapper.readValue(response.body(), Object.class);
 			String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
 			System.out.println(prettyJson);
-			*/
-
-			/*--Map
-			
-			Map<String, Object> list = mapper.readValue(response.body(), new TypeReference<Map<String, Object>>() {
-					});
-			System.out.println(list);
 			*/
 
 			//---JsonNode---
@@ -62,27 +56,16 @@ public class MoviesController {
 			JsonNode root = mapper.readTree(response.body());
 			JsonNode results = root.get("results");
 
-			// String posterPath = results.get(0).get("poster_path").textValue();
-			// String originalTitle = results.get(0).get("original_title").textValue();
-
-			// System.out.println(posterPath);
-			// System.out.println(originalTitle);
-
-			//ArrayList---New
-
 			for (JsonNode item : results) {
 				int id = item.get("id").intValue();
 				String posterPath = item.get("poster_path").textValue();
 				String originalTitle = item.get("original_title").textValue();
-				String releaseDate = item.get("release_date").textValue();
-				//System.out.println(posterPath);
 				//System.out.println(originalTitle);
 
 				MovieApiForm form = new MovieApiForm();
 				form.setId(id);
 				form.setPosterPath("https://image.tmdb.org/t/p/w500" + posterPath);
 				form.setOriginalTitle(originalTitle);
-				form.setReleaseDate(releaseDate);
 
 				list.add(form);
 			}
@@ -122,15 +105,12 @@ public class MoviesController {
 				int id = item.get("id").intValue();
 				String posterPath = item.get("poster_path").textValue();
 				String originalTitle = item.get("original_title").textValue();
-				String releaseDate = item.get("release_date").textValue();
-				//System.out.println(releaseDate);
 				//System.out.println(originalTitle);
 
 				MovieApiForm form = new MovieApiForm();
 				form.setId(id);
 				form.setPosterPath("https://image.tmdb.org/t/p/w500" + posterPath);
 				form.setOriginalTitle(originalTitle);
-				form.setReleaseDate(releaseDate);
 
 				list.add(form);
 			}

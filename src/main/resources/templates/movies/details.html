@@ -16,13 +16,14 @@
 					<img th:src="@{${posterPath}}" onerror="this.src='/images/fallback_poster.jpg';this.onerror='';">
 				</div>
 				<div class="col-md-8">
-					<h1 th:text="${originalTitle}">${movie.originalTitle}</h1>
-					<p th:text="${overview}">${movie.overview}</p>
+					<h1 th:text="${originalTitle}">Title</h1>
+					<p th:text="${overview}">Overview</p>
 					<p><strong th:text="${genreList.size <= 1} ? 'Genre: ' : 'Genres: '">Genre: </strong><span
 							th:each="genre, iterStat : ${genreList}"
 							th:text="!${iterStat.last} ? ${genre} + ', ': ${genre}"></span><span
 							th:text="${genreList.size == null OR genreList.size < 1} ? 'N/A'"></span></p>
-					<p><strong>Release Date: </strong><span th:text="${releaseDate}"></span></p>
+					<p><strong>Release Date: </strong><span
+							th:text="${releaseDate != null} ? ${releaseDate} : 'N/A'"></span></p>
 					<p><strong>Runtime: </strong><span
 							th:text="${runtime != null AND runtime > 0} ? ${runtime} + ' minutes' : 'N/A'"></span></p>
 					<p><strong th:text="${directorList.size <= 1} ? 'Director: ' : 'Directors: '">Director:
@@ -44,7 +45,7 @@
 
 			<p><strong th:text="${videoList.size == null OR videoList.size < 1} ? '' : 
 					(${videoList.size == 1} ? 'Official Trailer: ' : 'Official Trailers: ')">Official
-					Trailer:</strong></p>
+					Trailer: </strong></p>
 			<div class="video-box" th:each="videoPath : ${videoList}">
 				<iframe class="promo-video" th:src="@{${videoPath}}" allowfullscreen webkitallowfullscreen
 					mozallowfullscreen>
